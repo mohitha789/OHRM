@@ -1,6 +1,7 @@
 package tests;
 
-import org.openqa.selenium.WebElement;
+import java.io.IOException;
+
 import org.testng.annotations.Test;
 
 import pageelements.Contactdetailspage;
@@ -29,24 +30,70 @@ public class Myinfo extends Basetest {
 	Membershippage Mp;
 	Quitbrowser Qs;
 	@Test
-	public void Myinfoflow() throws Exception {
-	   lp = LaunchApplication();
-	   
-	   ExcelUtility1 xs = new ExcelUtility1();
-		
+	 public void login() throws IOException, InterruptedException {
+		 ExcelUtility1 xs = new ExcelUtility1();
+		 lp = LaunchApplication();
 		String username = xs.Get_Username(1, 0).toString();
 		String password = xs.Get_password(1, 1).toString();
 		hp = lp.enterlogindetails(username,password);
-		pd = hp.myinfoclick();
+	    }
+	@Test(dependsOnMethods = { "login" })
+	 public void home() throws IOException, InterruptedException {
+		
+		 pd = hp.myinfoclick();
+		
+	    }
+	@Test(dependsOnMethods = {"login", "home"})
+	 public void personal() throws IOException, InterruptedException {
+		
 		cd = pd.personalinfo();
-	    Ec = cd.info();
-	    Dp = Ec.Emergencypage();
-	    Ip = Dp.Dependencypage();
-	    Qp = Ip.Immigrationpage();
-	    Mp = Qp.Qualifications();
-	    Qs = Mp.Quitbrowser();
-	    Qs.Quitbrowser();
-	}
+		
+	    }
+	@Test(dependsOnMethods = { "login", "home" ,"personal"})
+	 public void contact() throws IOException, InterruptedException {
+		
+		Ec = cd.info();
+		
+	    }
+	@Test(dependsOnMethods = { "login","home","personal","contact"})
+	 public void emergency() throws IOException, InterruptedException {
+		
+		  Dp = Ec.emergencypage();
+		
+	    }
+	@Test(dependsOnMethods = {  "login","home","personal","contact","emergency" })
+	 public void dependents() throws IOException, InterruptedException {
+		
+	    Ip = Dp.dependencypage();
+		
+	    }
+	@Test(dependsOnMethods = { "login","home","personal","contact","emergency","dependents" })
+	 public void immigration() throws IOException, InterruptedException {
+		
+		Qp = Ip.immigrationpage();
+		
+	    }
+	@Test(dependsOnMethods = { "login","home","personal","contact","emergency","dependents","immigration"})
+	 public void qualification() throws IOException, InterruptedException {
+		
+		 Mp = Qp.qualifications();
+		
+	    }
+	@Test(dependsOnMethods = { "login","home","personal","contact","emergency","dependents","immigration","qualification"})
+	 public void membership() throws IOException, InterruptedException {
+		
+		 Qs = Mp.membership();
+		    
+		
+	    }
+	@Test(dependsOnMethods = { "login","home","personal","contact","emergency","dependents","immigration","qualification","membership" })
+	 public void quit() throws IOException, InterruptedException {
+		
+		  Qs.Quitbrowser();
+		
+	    }
+	
+	
 	
 }
 

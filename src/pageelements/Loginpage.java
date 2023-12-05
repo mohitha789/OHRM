@@ -8,11 +8,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Loginpage {
+import utilities.AbstractMethods;
+
+public class Loginpage extends AbstractMethods{
 
 	WebDriver driver;
 	
 	public Loginpage(WebDriver driverhere) {
+		super(driverhere);
 		this.driver = driverhere;
 		PageFactory.initElements(driver, this);
 	}
@@ -22,17 +25,17 @@ public class Loginpage {
 		//driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();
 	}
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[1]/div/div[2]/input")
+	@FindBy(xpath = "//*[@name='username']")
 	WebElement enterusername;
 
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[2]/div/div[2]/input")
+	@FindBy(xpath = "//*[@name='password']")
 	WebElement enterpassword;
 
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement submitbutton;
 	
 	public Homepage enterlogindetails(String username, String password) throws InterruptedException {
-		Thread.sleep(4000);
+		implicitlywaitmethod();	
 		enterusername.sendKeys(username);
 		enterpassword.sendKeys(password);
 		submitbutton.sendKeys(Keys.ENTER);

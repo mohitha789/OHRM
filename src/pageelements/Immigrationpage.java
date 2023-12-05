@@ -1,97 +1,111 @@
 package pageelements;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Immigrationpage {
+import utilities.AbstractMethods;
+
+public class Immigrationpage extends AbstractMethods{
 
 
 WebDriver driver;
 	
 	public Immigrationpage(WebDriver driverhere) {
+		super(driverhere);
 		this.driver = driverhere;
 		PageFactory.initElements(driver, this);
 		
 	}
 	
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[1]/div[2]/div[5]/a")
+	@FindBy(xpath = "//a[@class='orangehrm-tabs-item --active']")
 	WebElement Immigration;
 	
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/div/button")
+	@FindBy(xpath = "(//button[@type='button'])[3]")
 	WebElement Add;
 	
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[2]/div/div[1]/div/div[2]/input")
+	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[2]")
 	WebElement Number;
 	
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[2]/div/div[2]/div/div[2]/div/div/input")
+	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[3]")
 	WebElement Issueddate;
 	
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[2]/div/div[3]/div/div[2]/div/div/input")
+	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[4]")
 	WebElement Expirydate;
 	
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[2]/div/div[4]/div/div[2]/input")
+	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[5]")
 	WebElement Eligiblestatus;
 	
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[2]/div/div[5]/div/div[2]/div/div/div[2]/i")
+	@FindBy(xpath = "//div[@class='oxd-select-text oxd-select-text--active']")
 	WebElement Issuedby;
 	
 	@FindBy(xpath = "//*[text()= 'India']")
 	WebElement Issued;
 	
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[2]/div/div[6]/div/div[2]/div/div/input")
+	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[6]")
 	WebElement EligibleReviewDate;
 	
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[3]/button[2]")
+	@FindBy(xpath = "//button[@type='submit']")
 	WebElement save;
 	
-	public Qualificationspage Immigrationpage() throws InterruptedException {
+	By add_Immigration1 = By.xpath("//a[@class='orangehrm-tabs-item --active']");
+	By add_Add1 = By.xpath("(//button[@type='button'])[3]");
+	By add_Number1 = By.xpath("(//input[@class='oxd-input oxd-input--active'])[2]");
+	By add_Issueddate1 = By.xpath("(//input[@class='oxd-input oxd-input--active'])[3]");
+	By add_Expirydate1 = By.xpath("(//input[@class='oxd-input oxd-input--active'])[4]");
+	By add_Eligiblestatus1 = By.xpath("(//input[@class='oxd-input oxd-input--active'])[5]");
+	By add_Issuedby1 = By.xpath("//div[@class='oxd-select-text oxd-select-text--active']");
+	By add_Issued1 = By.xpath("//*[text()= 'India']");
+	By add_EligibleReviewDate1 = By.xpath("(//input[@class='oxd-input oxd-input--active'])[6]");
+	
+	public Qualificationspage immigrationpage() throws InterruptedException {
+		implicitlywaitmethod();	
 		
 		Immigration.click();
 		
-		Thread.sleep(2000);
+		Wait_Till_Link_Is_Clickable(add_Immigration1);
 		
 		Add.click();
 		
-		Thread.sleep(2000);
+		Wait_Till_Link_Is_Clickable(add_Add1);
 		
 		Number.sendKeys(Keys.CONTROL + "a");
 		Number.sendKeys(Keys.DELETE);
 		Number.sendKeys("edctp456");
 		
-		Thread.sleep(2000);
+		Wait_Till_Link_Is_Clickable(add_Number1);
 		  
-		
 		Issueddate.sendKeys(Keys.CONTROL + "a"); 
 		Issueddate.sendKeys(Keys.DELETE);
 		Issueddate.sendKeys("2023-10-20");
 		
-		Thread.sleep(2000);
+		Wait_Till_Link_Is_Clickable(add_Issueddate1);
 		  
 		Expirydate.sendKeys(Keys.CONTROL + "a"); 
 		Expirydate.sendKeys(Keys.DELETE);
 		Expirydate.sendKeys("2030-12-28");
 		
-		Thread.sleep(2000);
+		Wait_Till_Link_Is_Clickable(add_Expirydate1);
 		
 		Eligiblestatus.sendKeys(Keys.CONTROL + "a");
 		Eligiblestatus.sendKeys(Keys.DELETE);
 		Eligiblestatus.sendKeys("Yes");
 		
-		Thread.sleep(2000);
+		Wait_Till_Link_Is_Clickable(add_Eligiblestatus1);
 		
 		Issuedby.click();
 		Issued.click();
-		
-		Thread.sleep(2000);
+		Wait_Till_Link_Is_Clickable(add_Issuedby1);
+		Wait_Till_Link_Is_Clickable(add_Issued1);
 		
 		EligibleReviewDate.sendKeys(Keys.CONTROL + "a");
 		EligibleReviewDate.sendKeys(Keys.DELETE);
 		EligibleReviewDate.sendKeys("2023-12-28");
 		
-		Thread.sleep(2000);
+		Wait_Till_Link_Is_Clickable(add_EligibleReviewDate1);
 		
 		save.sendKeys(Keys.ENTER);
 		

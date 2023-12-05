@@ -5,7 +5,16 @@
     <classes>
       <class name="tests.Myinfo">
         <methods>
-          <include name="Myinfoflow"/>
+          <include name="emergency"/>
+          <include name="membership"/>
+          <include name="personal"/>
+          <include name="dependents"/>
+          <include name="qualification"/>
+          <include name="login"/>
+          <include name="home"/>
+          <include name="immigration"/>
+          <include name="quit"/>
+          <include name="contact"/>
         </methods>
       </class> <!-- tests.Myinfo -->
     </classes>

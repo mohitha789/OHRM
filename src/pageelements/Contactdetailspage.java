@@ -1,130 +1,145 @@
 package pageelements;
 
-import java.io.IOException;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Contactdetailspage {
+import utilities.AbstractMethods;
+
+public class Contactdetailspage extends AbstractMethods{
 
 
 	WebDriver driver;
 	
 	public Contactdetailspage(WebDriver driverhere) {
+		super(driverhere);
 		this.driver = driverhere;
 		PageFactory.initElements(driver, this);
 		
 	}
 
 	
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[6]/a/span")
+	@FindBy(xpath = "//ul//span[text()='My Info']")
 	WebElement Myinfo;
 	
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[1]/div/div[1]/div/div[2]/input")
+	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[2]")
 	WebElement street1;
 
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[1]/div[2]/div[2]/a")
+	@FindBy(xpath = "//a[@class='orangehrm-tabs-item --active']")
 	WebElement contactdetails;
 	
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[1]/div/div[2]/div/div[2]/input")
+	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[3]")
 	WebElement street2;
 	
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[1]/div/div[3]/div/div[2]/input")
+	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[4]")
 	WebElement city;
 
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[1]/div/div[4]/div/div[2]/input")
+	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[5]")
 	WebElement state;
 	
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[1]/div/div[5]/div/div[2]/input")
+	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[6]")
 	WebElement pincode;
 	
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[1]/div/div[6]/div/div[2]/div/div/div[2]/i")
+	@FindBy(xpath = "//div[@class='oxd-select-text-input']")
 	WebElement country;
 	
 	@FindBy(xpath = "//*[text()= 'India']")
 	WebElement Countryselect;
 
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[2]/div/div[1]/div/div[2]/input")
+	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[7]")
 	WebElement Home;
 	
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[2]/div/div[2]/div/div[2]/input")
+	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[8]")
 	WebElement Mobile;
 
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[3]/div/div[1]/div/div[2]/input")
+	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[10]")
 	WebElement Email;
 	
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[4]/button")
+	@FindBy(xpath = "//button[@type='submit']")
 	WebElement save;
+	
+	By add_Myinfo1 = By.xpath("//ul//span[text()='My Info']");
+	By add_contactdetails1 = By.xpath("//a[@class='orangehrm-tabs-item --active']");
+	By add_street11 = By.xpath("(//input[@class='oxd-input oxd-input--active'])[2]");
+	By add_street21 = By.xpath("(//input[@class='oxd-input oxd-input--active'])[3]");
+	By add_city1 = By.xpath("(//input[@class='oxd-input oxd-input--active'])[4]");
+	By add_state1 = By.xpath("(//input[@class='oxd-input oxd-input--active'])[5]");
+	By add_pincode1 = By.xpath("(//input[@class='oxd-input oxd-input--active'])[6]");
+	By add_country1 = By.xpath("//div[@class='oxd-select-text-input']");
+	By add_Countryselect1 = By.xpath("//*[text()= 'India']");
+	By add_Home1 = By.xpath("(//input[@class='oxd-input oxd-input--active'])[7]");
+	By add_Mobile1 = By.xpath("(//input[@class='oxd-input oxd-input--active'])[8]");
+	By add_Email1 = By.xpath("(//input[@class='oxd-input oxd-input--active'])[10]");
+	By add_save1 = By.xpath("//button[@type='submit']");
 	
 	public Emergencycontacts info() throws InterruptedException {
 		
 		Myinfo.click();
 		
-		Thread.sleep(2000);
+		Wait_Till_Link_Is_Clickable(add_Myinfo1);
 		
 		contactdetails.click();
 		
-		Thread.sleep(2000);
+		Wait_Till_Link_Is_Clickable(add_contactdetails1);
 		
 		street1.sendKeys(Keys.CONTROL + "a");
 		street1.sendKeys(Keys.DELETE);
 		street1.sendKeys("oc colony");
 		
-		Thread.sleep(2000);
+		Wait_Till_Link_Is_Clickable(add_street11);
 		
 		street2.sendKeys(Keys.CONTROL + "a");
 		street2.sendKeys(Keys.DELETE);
 		street2.sendKeys("colony");
 		
-		Thread.sleep(2000);
+		Wait_Till_Link_Is_Clickable(add_street21);
 		
 		city.sendKeys(Keys.CONTROL + "a");
 		city.sendKeys(Keys.DELETE);
 		city.sendKeys("Hyderbad");
 		
-		Thread.sleep(2000);
+		Wait_Till_Link_Is_Clickable(add_city1);
 		
 		state.sendKeys(Keys.CONTROL + "a");
 		state.sendKeys(Keys.DELETE);
 		state.sendKeys("AP");
-		
-		Thread.sleep(2000);
+		Wait_Till_Link_Is_Clickable(add_state1);
 		
 		pincode.sendKeys(Keys.CONTROL + "a");
 		pincode.sendKeys(Keys.DELETE);
 		pincode.sendKeys("513583");
 		
-		Thread.sleep(2000);
+		Wait_Till_Link_Is_Clickable(add_pincode1);
 		
 		country.click();
 		Countryselect.click();
-		
-		Thread.sleep(2000);
+		Wait_Till_Link_Is_Clickable(add_country1);
+		Wait_Till_Link_Is_Clickable(add_Countryselect1);
 		
 		Home.sendKeys(Keys.CONTROL + "a");
 		Home.sendKeys(Keys.DELETE);
 		Home.sendKeys("520469");
 		
-		Thread.sleep(2000);
+		Wait_Till_Link_Is_Clickable(add_Home1);
 		
 		Mobile.sendKeys(Keys.CONTROL + "a");
 		Mobile.sendKeys(Keys.DELETE);
 		Mobile.sendKeys("8931456789");
 		
-		Thread.sleep(2000);
+		Wait_Till_Link_Is_Clickable(add_Mobile1);
 		
 		Email.sendKeys(Keys.CONTROL + "a");
 		Email.sendKeys(Keys.DELETE);
 		Email.sendKeys("admin@example.com");
 		
-		Thread.sleep(2000);
+		Wait_Till_Link_Is_Clickable(add_Email1);
 		
 		save.sendKeys(Keys.ENTER);
+		
+		Wait_Till_Link_Is_Clickable(add_save1);
 		
 		Emergencycontacts Ec = new Emergencycontacts(driver);
 		
